@@ -29,6 +29,7 @@ Additionally, you'll need to install ffmpeg. Follow the installation instruction
 
 <H1>Usage
 The main code file in the project looks like this:</H1>
+\```
 # -*- coding: utf-8 -*-
 """
 Created on Fri Jul  8 12:11:16 2022
@@ -61,7 +62,7 @@ if __name__ == "__main__":
     text = extract_text_from_pdf(pdf_path)
     print(text)
     Safir(text)
-
+```\
 
 This code extracts text from the specified PDF file and converts it to an audio file. The Safir function uses gTTS to convert the text to an MP3 file and pydub to increase the sampling rate of the audio.
 
