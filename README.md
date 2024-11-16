@@ -25,6 +25,38 @@ pip install gtts
 pip install PyPDF2
 pip install pydub
 ```
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Jul  8 12:11:16 2022
+
+@author: Savage33
+"""
+
+from gtts import gTTS   
+import PyPDF2
+from pydub import AudioSegment
+
+def Safir(text, output_path="high_quality_audio.mp3"):
+    tts = gTTS(text=text, lang='tr')
+    tts.save("good.mp3")
+    audio = AudioSegment.from_file("good.mp3")
+    audio = audio.set_frame_rate(44100)  # Increase the sample rate
+    audio.export(output_path, format="mp3")
+
+def extract_text_from_pdf(pdf_path):
+    with open(pdf_path, "rb") as pdf_file:
+        pdf_reader = PyPDF2.PdfReader(pdf_file)
+        text = ""
+        for page_num in range(len(pdf_reader.pages)):
+            page = pdf_reader.pages[page_num]
+            text += page.extract_text()
+        return text
+
+if __name__ == "__main__":
+    pdf_path = r"C:\Users\Savage33\Downloads\istiklalmarşı.pdf"
+    text = extract_text_from_pdf(pdf_path)
+    print(text)
+    Safir(text)
 
 
 # PDF to Speech Converter
